@@ -14,3 +14,4 @@ This project was done as a two-man student project in the scope of the class adv
 - [ ] proof reading
 
 ## ISSUES 
+- [ ] gotta talk about which test to use for exercise 4
