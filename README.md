@@ -9,8 +9,8 @@ This project was done as a two-man student project in the scope of the class adv
 - [ ] Exercise 4
 - [ ] Exercise 5
 
-### TODO Rapport
+## TODO Rapport
 - [ ] finish Rapport
 - [ ] proof reading
 
-# ISSUES 
+## ISSUES 
