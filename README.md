@@ -5,7 +5,7 @@ This project was done as a two-man student project in the scope of the class adv
 ## TODO Exercises
 - [x] Exercise 1
 - [x] Exercise 2
-- [ ] Exercise 3
+- [x] Exercise 3
 - [ ] Exercise 4
 - [ ] Exercise 5
 
@@ -14,4 +14,4 @@ This project was done as a two-man student project in the scope of the class adv
 - [ ] proof reading
 
 ## ISSUES 
-- [ ] gotta talk about which test to use for exercise 4
+- [ ] not sure whether my answer for 3) a) is completely correct -> need discussion
