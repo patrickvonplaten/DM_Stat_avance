@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.17)  20 FEB 2017 14:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.17)  27 FEB 2017 15:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2284,17 +2284,17 @@ Package logreq Info: Writing requests to 'rapportStat.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52100 strings out of 493014
- 1176054 string characters out of 6133351
+ 52099 strings out of 493014
+ 1176046 string characters out of 6133351
  1698042 words of memory out of 5000000
- 54896 multiletter control sequences out of 15000+600000
+ 54895 multiletter control sequences out of 15000+600000
  12501 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,6n,79p,10374b,1460s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on auxFile/rapportStat.pdf (1 page, 33523 bytes).
+Output written on auxFile/rapportStat.pdf (1 page, 33065 bytes).
 PDF statistics:
  28 PDF objects out of 1000 (max. 8388607)
  21 compressed objects within 1 object stream
