@@ -14,4 +14,4 @@ This project was done as a two-man student project in the scope of the class adv
 - [ ] proof reading
 
 ## ISSUES 
-- [ ] not sure whether my answer for 3) a) is completely correct -> need discussion
+- [x] not sure whether my answer for 3) a) is completely correct -> need discussion
