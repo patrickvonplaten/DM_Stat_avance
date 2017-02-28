@@ -1,14 +1,14 @@
-#suppose that the data file "Centrale-DM.data" lies in the same 
+#suppose that the data file "Centrale-DM.data" lies in the same folder
 #as this file
 
 #for patrick:
-setwd("/Users/patrickvonplaten/DM_Stat_avance/src") 
+#setwd("/Users/patrickvonplaten/DM_Stat_avance/src") 
 #for erik:
-#setwd("...") 
+setwd("/Users/ebrote/Desktop/DM_Stat_avance/src") 
 rm(list=ls(all=TRUE))
 
 # 1)
-#read in table
+#read in table format
 df = read.table("Centrale-DM.data", header = TRUE)
 #check observations and variables
 dim(df)
@@ -22,28 +22,34 @@ library(lattice)
 pairs(df[,1:4])
 #make two boxplots
 par(mfrow=c(1,2))
-boxplot(price~ABS,data=df, main = paste("Price ~ f(ABS)"))
-boxplot(price~OpenRoof,data=df, main = paste("Price ~ f(OpenRoof)"))
-#comment: 
+bxpABS <-boxplot(price~ABS,data=df, main = paste("Price ~ f(ABS)"))
+bxpOpenRoof <- boxplot(price~OpenRoof,data=df, main = paste("Price ~ f(OpenRoof)"))
+#Values of each quartile of the boxplots
+bxpABS$stats
+bxpOpenRoof$stats
+
+#comments: 
 #-------------------------scatterplot---------------------------------
-#scatterplot shows a rather strong correlation between price and age 
-# and some correlation between age and km and price and km
-# TIA seems to have no influence on any other variable in this model
+# Scatterplot shows a relavitely strong correlation between price and age 
+# and some correlation between age and km as well as price and km.
+# TIA seems to have no influence on other variables in this model.
 
 #---------------------------price ~ ABS--------------------------------
-# boxplots show that for cars having an ABS the medium is significantly 
-# lower than for cars not having an ABS. Also, the variance of the price
-# of cars having an ABS is much lower than for those that have one, 
-# since it can be seen that 50% of all "ABS" cars have a price that ranges
+# The boxplot show that for cars having an ABS the median is significantly 
+# high than for cars not having an ABS. Also, the variance of the price
+# of cars having an ABS is much lower than for those that have one. 
+# Since it can be seen that 50% of all "ABS" cars have a price that ranges
 # between 2.6 and 4 with pretty much no "ABS" car having a price higher than 6
-# , wheres 50% of all "Non-ABS" cars have a price that ranges between 2.5 
+# , where as 50% of all "Non-ABS" cars have a price that ranges between 2.5 
 # and 4.5 and a maximum of 7. It can be concluded that the price is somewhat 
-# correlated to (yes/no ABS), but not very strongly.
+# correlated to the dummy variable ABS, but not very strongly.
+
 #---------------------------price ~ OpenRoof----------------------------
-# it can be seen that the medium is exactly the same for "Non-OpenRoof" and
-# "OpenRoof" cars. The 50% range around the medium is smaller for "OpenRoof"
-# cars, but apart from that they are no significant differences. To sum this 
-# up, the correlation between price and OpenRoof seems to be rather small.
+# It can be seen that the medians are quite similar for "Non-OpenRoof" and
+# "OpenRoof" cars. The "box range" around the is smaller for "OpenRoof"
+# cars, but apart from that they are no significant differences. In summary, 
+# the correlation between price and OpenRoof seems to be rather small, but 
+# further analysis is needed.
 
 # 3)
 
