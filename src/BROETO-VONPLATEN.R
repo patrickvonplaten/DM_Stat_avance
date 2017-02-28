@@ -28,7 +28,7 @@ bxpOpenRoof <- boxplot(price~OpenRoof,data=df, main = paste("Price ~ f(OpenRoof)
 bxpABS$stats
 bxpOpenRoof$stats
 
-#comments: 
+#COMMENTS:
 #-------------------------scatterplot---------------------------------
 # Scatterplot shows a relavitely strong correlation between price and age 
 # and some correlation between age and km as well as price and km.
@@ -55,27 +55,32 @@ bxpOpenRoof$stats
 
 # a)
 # creating new data frame with "ABS" as a qualitative variable
-logDf = df
-logDf["ABS"] = as.logical(as.integer(df$ABS))
+loglDf = df
+loglDf["ABS"] = as.logical(as.integer(df$ABS))
 # making the two different models
 modQuant = lm(price ~., data = df)
-modQual = lm(price ~., data = logDf)
+modQual = lm(price ~., data = loglDf)
 # compare them 
 summary(modQuant)
 summary(modQual)
-# no difference can be seen between those two models, so there doesn't 
-# seem to be a difference
-# !!! not a 100% save on this one !!!
+
+# COMMENTS: No difference can be seen between those two models, so there doesn't 
+# seem to be a difference. It may be pertinant remeber that the logical variable
+# cannot be calculated upon, e.g. we cannot calculate the average of loglDf$ABS.
+# Though this should not make a difference in the final model as regression requires
+# the logical variable to implemented as a dummy variable (i.e. qualitavitely) anyways.
 
 # b)
 modPriABS = lm(price ~ ABS, data = df)
 summary(modPriABS)
-#It clearly can be seen that the variable "ABS" does not account for any of 
-# the variance of the price, since its R^2 is very low (0.00097). That means 
+# COMMENTS: It clearly can be seen that the variable "ABS" does not account for any of 
+# the variance of the price, since it's R^2 is very low (0.00097). That means 
 # in general that the model does not do a very good job predicting the price
-# Also, it can be seen that our "Intercept" value nearly completely influences
-# the model (look at the parameter values or "Pr(>|t|)"). Therefore, our prediction
+# Also, it can be seen that our "Intercept" value nearly completely explains
+# the price (look at the parameter values or "Pr(>|t|)"). Therefore, our prediction
 # would just create a constant line (when plotting our pred), showing that the biais 
-# is too high
+# is too high.
 
+# FOR REPORT: Note that of 172 cars 118 or about 69% have ABS technology. Does this 
+# influence the results?
 
