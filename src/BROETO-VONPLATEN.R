@@ -80,7 +80,7 @@ summary(modPriABS)
 # the variance of the price, since it's R^2 is very low (0.00097). That means 
 # in general that the model does not do a very good job predicting the price
 # Also, it can be seen that our "Intercept" value nearly completely explains
-# the price (look at the parameter values or "Pr(>|t|)"). Therefore, our prediction
+# the price (look at the parameter values or "Pr(>|t|)" for ABS). Therefore, our prediction
 # would just create a constant line (when plotting our pred), showing that the biais 
 # is too high.
 
