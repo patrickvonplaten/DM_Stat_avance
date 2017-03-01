@@ -2,7 +2,7 @@
 #as this file
 
 #for patrick:
-#setwd("/Users/patrickvonplaten/DM_Stat_avance/src") 
+setwd("/Users/patrickvonplaten/DM_Stat_avance/src")
 #for erik:
 setwd("/Users/ebrote/Desktop/DM_Stat_avance/src") 
 rm(list=ls(all=TRUE))
@@ -126,6 +126,9 @@ predict(modPriKM, data135TKm, interval="confidence")
 # km) is naturally lower and doesn't vary too much. Whereas for cars having
 # lower usage (50.000 km) the price can vary much more since other factors 
 # play a more important role (car type, car performance,...)
+# Also what is very important is that 135.000 km is the mean. Since the sample 
+# follows a t distribution, it is normal that there is more data around 135.000km (the distribution is 
+# denser). Therefore the 95% confidence intervall has a shorter lenght than the one at 50.000km
 
 # c)
 kmCentered = (df$km - mean(df$km))
@@ -144,6 +147,9 @@ summary(modPriKop1)
 # are the same. It is obvious that centering and reducing shouldn't change 
 # anything. The regression looks at how changes in the X value affect the Y vaule
 # maybe the last sentence nicely formulated is already enough
+
+# En effet, théoriquement, on doit trouver un coefficient directeur égale à l’écart type de la variable km fois le coefficient directeur initialement trouvé et similairement
+# l’intercept doit être égale à l’ancien intercept plus l’ancien coefficient directeur fois la moyenne de km.
 
 # d)
 # linear model is as follows: given a random sample(Y,X1,...,XN) the relation
@@ -166,6 +172,10 @@ anova(M3b)
 # results are obviously not the same --> comment!!!
 # need more information about anova ...
 
+# La méthode anova appliquée aux deux modèles donne des résultats différents. Cela est dû à l’ordre des variables en entrée. 
+# Si l’on considère que le prix varie majoritairement de façon linéaire avec la distance parcourue alors il faut mettre la variable km en premier. Les variations restantes seront assimilées à des variations évoluant en fonction de la distance au carré ou au cube.
+# En effet, la fonction anova étudie tout d’abord les variations dûes à la première variable d’entrée puis à la seconde et à la troisième.
+
 # f)
 library(car)
 ?vif
@@ -183,6 +193,8 @@ library(car)
 # from TP and amphi
 
 # b) validate the model using test (i guess x^2 tests)
+
+
 
 
 # FOR REPORT: Note that of 172 cars 118 or about 69% have ABS technology. Does this 
