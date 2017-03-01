@@ -14,7 +14,7 @@ df = read.table("Centrale-DM.data", header = TRUE)
 dim(df)
 #rename colname of extra1 to "ABS" and extra2 to "OpenRoof"
 colnames(df)[5] = "ABS"
-colnames(df)[6] = "OpenRoof"
+colnames(df)[6] = "SunRoof"
 
 # 2)
 #make scatterplot
@@ -22,11 +22,11 @@ library(lattice)
 pairs(df[,1:4])
 #make two boxplots
 par(mfrow=c(1,2))
-bxpABS <-boxplot(price~ABS,data=df, main = paste("Price ~ f(ABS)"))
-bxpOpenRoof <- boxplot(price~OpenRoof,data=df, main = paste("Price ~ f(OpenRoof)"))
+bxpABS <-boxplot(price~ABS,data=df, main = paste("Car Price with and without ABS"))
+bxpSunRoof <- boxplot(price~SunRoof,data=df, main = paste("Car Price with and without Sunroofs"))
 #Values of each quartile of the boxplots
 bxpABS$stats
-bxpOpenRoof$stats
+bxpSunRoof$stats
 
 #COMMENTS:
 #-------------------------scatterplot---------------------------------
