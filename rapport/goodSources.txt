@@ -1,6 +1,0 @@
-
-http://stats.stackexchange.com/questions/59250/how-to-interpret-the-output-of-the-summary-method-for-an-lm-object-in-r
-
-http://www.r-tutor.com/elementary-statistics/simple-linear-regression/confidence-interval-linear-regression
-
-http://stats.stackexchange.com/questions/69144/calculating-prediction-interval
