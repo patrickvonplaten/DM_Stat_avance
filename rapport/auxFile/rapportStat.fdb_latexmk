@@ -1,10 +1,10 @@
 # Fdb version 3
-["biber auxFile/rapportStat"] 1487597080 "auxFile/rapportStat.bcf" "auxFile/rapportStat.bbl" "auxFile/rapportStat" 1488207469
+["biber auxFile/rapportStat"] 1487597080 "auxFile/rapportStat.bcf" "auxFile/rapportStat.bbl" "auxFile/rapportStat" 1488315729
   "auxFile/rapportStat.bcf" 1488207469 92065 6ba3808ed7966baba34221d8af1b3da0 ""
   (generated)
   "auxFile/rapportStat.bbl"
   "auxFile/rapportStat.blg"
-["pdflatex"] 1488207467 "rapportStat.tex" "auxFile/rapportStat.pdf" "rapportStat" 1488207469
+["pdflatex"] 1488207467 "rapportStat.tex" "auxFile/rapportStat.pdf" "rapportStat" 1488315729
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
