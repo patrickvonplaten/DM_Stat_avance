@@ -72,7 +72,10 @@ summary(modQual)
 
 # b)
 modPriABS = lm(price ~ ABS, data = df)
+# modPriAll = lm(price ~.,data = df)
 summary(modPriABS)
+# summary(modPriAll)
+
 # COMMENTS: It clearly can be seen that the variable "ABS" does not account for any of 
 # the variance of the price, since it's R^2 is very low (0.00097). That means 
 # in general that the model does not do a very good job predicting the price
@@ -80,6 +83,107 @@ summary(modPriABS)
 # the price (look at the parameter values or "Pr(>|t|)"). Therefore, our prediction
 # would just create a constant line (when plotting our pred), showing that the biais 
 # is too high.
+
+# COMMENT: WE SHOULD EXPLAIN THE MEANING OF EACH OF THE NUMBERS WE GET WHEN 
+# DOING LINEAR REGRESSION! THEN IT IS CLEARER AND EASIER TO UNDERSTAND THE CONCLUSION WE 
+# ARE ARRIVING AT TAKING INTO ACCOUNT A CERTIAN LINEAR REGRESSION
+
+# 4)
+# a)
+# create modPriKM = linear regression as f(km)
+modPriKM = lm(price ~ km, data = df)
+summary(modPriKM)
+
+# km is obviously a better parameter to describe the price of 
+# a car since 1) the t Pr(>|t|) is much lower than the one 
+# obtained above and the R-squared value is much higher meaning
+# that the sum of squares of residuals of this linear regression 
+# much lower than the one obtained before hinting that this linear linear
+# regression fits the actual price much better
+
+# b)
+# we look for cars that have a km usage of around 50,000km, so we create 
+# a variable called data50TKm that just contains the value 50 (in Thousand)
+# that is gonna be used for the predict function that creates the confid intervall 
+# we use the default sig. level of 95 % which is the standart for both sided confid intervall
+
+data50TKm = data.frame(km=50)
+predict(modPriKM, data50TKm, interval="confidence")
+
+# fit      lwr      upr
+# 1 4.756639 4.426392 5.086886
+
+data135TKm = data.frame(km=135)
+predict(modPriKM, data135TKm, interval="confidence")
+
+# fit      lwr      upr
+# 1 3.392284 3.238505 3.546063
+
+# We see that the confidence intervall in the case the car has 135km 
+# is much smaller at the same sig. level. That implies that the variance 
+# of the price for cars having 135.000 km is lower that can be justified 
+# by the fact that the price of cars already having a high usage (in terms of 
+# km) is naturally lower and doesn't vary too much. Whereas for cars having
+# lower usage (50.000 km) the price can vary much more since other factors 
+# play a more important role (car type, car performance,...)
+
+# c)
+kmCentered = (df$km - mean(df$km))
+kmCentered/df$kop1 
+1/(sd(df$km))
+# = 0.02242945 slightly different from 1/(sd(df$km))
+# this shows that kop1 is the variable km centered and reduced
+
+modPriKop1 = lm(price ~ kop1, data = df)
+summary(modPriKop1)
+ 
+#it can be shown that the models are logically the same since R^2
+# and other important functions are equal
+# need a good explanation for this one!!!
+# --> explain mathematically why T VALUE, Pr(>|t|) and F-statistic and R^2
+# are the same. It is obvious that centering and reducing shouldn't change 
+# anything. The regression looks at how changes in the X value affect the Y vaule
+# maybe the last sentence nicely formulated is already enough
+
+# d)
+# linear model is as follows: given a random sample(Y,X1,...,XN) the relation
+# between the observations Y and the independant variables X1,...XN is formulated 
+# as Y1 = b0 + b1*f1(X1) + ... + bN*fN(XN), where fi may be non-linear funcions.
+
+M3 = lm(price~km + I(km^2) + I(km^3), data = df)
+
+# Thus M3 is a linear model
+
+summary(M3)
+
+# comment as above
+
+# e)
+M3b = lm(price~ I(km^3) + I(km^2)+ km, data = df)
+
+anova(M3)
+anova(M3b)
+# results are obviously not the same --> comment!!!
+# need more information about anova ...
+
+# f)
+library(car)
+?vif
+# check out the vif function and calculate the variance inflation factor
+# wikepedia explains how to calculate the output of the function
+# https://en.wikipedia.org/wiki/Variance_inflation_factor
+
+# g)
+
+# TODO
+
+# 5)
+
+# a) look at former R tp where variables where terminated. Get different methods
+# from TP and amphi
+
+# b) validate the model using test (i guess x^2 tests)
+
 
 # FOR REPORT: Note that of 172 cars 118 or about 69% have ABS technology. Does this 
 # influence the results?
