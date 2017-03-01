@@ -1,9 +1,9 @@
 [0] Config.pm:343> INFO - This is Biber 2.5
 [0] Config.pm:346> INFO - Logfile is 'auxFile/rapportStat.blg'
-[46] biber-darwin:290> INFO - === Mer mar  1, 2017, 01:25:28
-[65] Biber.pm:351> INFO - Reading 'auxFile/rapportStat.bcf'
-[156] Biber.pm:776> INFO - Found 0 citekeys in bib section 0
-[163] Utils.pm:149> WARN - The file 'auxFile/rapportStat.bcf' does not contain any citations!
+[45] biber-darwin:290> INFO - === Wed Mar  1, 2017, 23:10:22
+[64] Biber.pm:351> INFO - Reading 'auxFile/rapportStat.bcf'
+[158] Biber.pm:776> INFO - Found 0 citekeys in bib section 0
+[164] Utils.pm:149> WARN - The file 'auxFile/rapportStat.bcf' does not contain any citations!
 [170] bbl.pm:526> INFO - Writing 'auxFile/rapportStat.bbl' with encoding 'UTF-8'
 [170] bbl.pm:619> INFO - Output to auxFile/rapportStat.bbl
 [170] Biber.pm:108> INFO - WARNINGS: 1

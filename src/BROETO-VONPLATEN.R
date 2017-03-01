@@ -2,7 +2,7 @@
 #as this file
 
 #for patrick:
-setwd("/Users/patrickvonplaten/DM_Stat_avance/src")
+#setwd("/Users/patrickvonplaten/DM_Stat_avance/src")
 #for erik:
 setwd("/Users/ebrote/Desktop/DM_Stat_avance/src") 
 rm(list=ls(all=TRUE))
@@ -21,7 +21,7 @@ colnames(df)[6] = "SunRoof"
 library(lattice)
 pairs(df[,1:4])
 #make two boxplots
-par(mfrow=c(1,2))
+#par(mfrow=c(1,2))
 bxpABS <-boxplot(price~ABS,data=df, main = paste("Car Price with and without ABS"))
 bxpSunRoof <- boxplot(price~SunRoof,data=df, main = paste("Car Price with and without Sunroofs"))
 #Values of each quartile of the boxplots
@@ -148,8 +148,8 @@ summary(modPriKop1)
 # anything. The regression looks at how changes in the X value affect the Y vaule
 # maybe the last sentence nicely formulated is already enough
 
-# En effet, théoriquement, on doit trouver un coefficient directeur égale à l’écart type de la variable km fois le coefficient directeur initialement trouvé et similairement
-# l’intercept doit être égale à l’ancien intercept plus l’ancien coefficient directeur fois la moyenne de km.
+# En effet, th??oriquement, on doit trouver un coefficient directeur ??gale ?? l?????cart type de la variable km fois le coefficient directeur initialement trouv?? et similairement
+# l???intercept doit ??tre ??gale ?? l???ancien intercept plus l???ancien coefficient directeur fois la moyenne de km.
 
 # d)
 # linear model is as follows: given a random sample(Y,X1,...,XN) the relation
@@ -172,9 +172,9 @@ anova(M3b)
 # results are obviously not the same --> comment!!!
 # need more information about anova ...
 
-# La méthode anova appliquée aux deux modèles donne des résultats différents. Cela est dû à l’ordre des variables en entrée. 
-# Si l’on considère que le prix varie majoritairement de façon linéaire avec la distance parcourue alors il faut mettre la variable km en premier. Les variations restantes seront assimilées à des variations évoluant en fonction de la distance au carré ou au cube.
-# En effet, la fonction anova étudie tout d’abord les variations dûes à la première variable d’entrée puis à la seconde et à la troisième.
+# La m??thode anova appliqu??e aux deux mod??les donne des r??sultats diff??rents. Cela est d?? ?? l???ordre des variables en entr??e. 
+# Si l???on consid??re que le prix varie majoritairement de fa??on lin??aire avec la distance parcourue alors il faut mettre la variable km en premier. Les variations restantes seront assimil??es ?? des variations ??voluant en fonction de la distance au carr?? ou au cube.
+# En effet, la fonction anova ??tudie tout d???abord les variations d??es ?? la premi??re variable d???entr??e puis ?? la seconde et ?? la troisi??me.
 
 # f)
 library(car)
