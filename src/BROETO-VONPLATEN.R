@@ -2,9 +2,9 @@
 #as this file
 
 #for patrick:
-#setwd("/Users/patrickvonplaten/DM_Stat_avance/src")
+setwd("/Users/patrickvonplaten/DM_Stat_avance/src")
 #for erik:
-setwd("/Users/ebrote/Desktop/DM_Stat_avance/src") 
+# setwd("/Users/ebrote/Desktop/DM_Stat_avance/src") 
 rm(list=ls(all=TRUE))
 
 # 1)
@@ -260,15 +260,59 @@ all.equal(df$kop3,kop3)
 
 
 # 5)
+# a) 
+Mfirst = lm(price~.,data=df)
+library(MASS)
 
-# a) look at former R tp where variables where terminated. Get different methods
-# from TP and amphi
+# first model: leave all the variables in there 
+
+summary(Mfirst)
+
+# second model: look at the summary and choose variables by p - vaules 3 highest
+
+Msecond = lm(price~age + km + ageop2,data=df)
+summary(Msecond)
+
+#third model: do the step analysis in both directions
+
+Mthird = stepAIC(Mfirst)
+summary(Mthird)
+
+# fourth model: do the step analysis as a start of age and km:
+df4 = df
+colnames(df4) = c("x1","x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12")
+Mfourth = lm(x1~x3+x2+x11,data=df4);
+summary(Mfourth)
+mod=paste("~",paste("x",2:12,sep="",collapse="+"))
+Mfourth=stepAIC(Mfourth,scope=list(lower=~1,upper=mod),
+            direction="both")
+summary(Mfourth)
+rm(df4)
+
 
 # b) validate the model using test (i guess x^2 tests)
 
+#let's see which model has the highest R squared score. Model3 and 4 are the same, so we can 
+# leave one out
 
+summary(Mfirst)$r.squared
+summary(Msecond)$r.squared
+summary(Mthird)$r.squared
 
+# All of the R^squared values are pretty similar, so we need other validation tools
 
-# FOR REPORT: Note that of 172 cars 118 or about 69% have ABS technology. Does this 
-# influence the results?
+library(forecast)
 
+# now the four different models are gonna be tested using the CV function seen before in the TP
+# of the package forecast. It is very useful because it calculates the PRESS
+# (= prediction residual sum of squares) which is a value that derives from AIC, 
+# corrected AIC, the adjusted R^2 value and the BIC and gives therefore a well 
+# funded score of how well the model fits the function taking into consideration 
+# how many variables it uses and other factors. The model that has the lowest CV value
+# will be selected
+
+CV(Mfirst)
+CV(Msecond)
+CV(Mthird)
+
+# Model 3 is the best model
