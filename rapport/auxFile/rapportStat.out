@@ -5,13 +5,10 @@
 \BOOKMARK [2][-]{subsection.4.1}{Simple Regression}{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{Inference from Simple Model}{section.4}% 6
 \BOOKMARK [2][-]{subsection.4.3}{Determination of Mystery Variable kop1}{section.4}% 7
-<<<<<<< Updated upstream
-\BOOKMARK [1][-]{section.5}{Study of Price as a Function of all variables}{}% 8
-\BOOKMARK [2][-]{subsection.5.1}{Prelimenary selection of different models}{section.5}% 9
-\BOOKMARK [2][-]{subsection.5.2}{Validation of the models}{section.5}% 10
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 11
-=======
 \BOOKMARK [2][-]{subsection.4.4}{Polynomial Regression Model}{section.4}% 8
 \BOOKMARK [2][-]{subsection.4.5}{ANOVA}{section.4}% 9
 \BOOKMARK [2][-]{subsection.4.6}{Variance Inflation Factors}{section.4}% 10
->>>>>>> Stashed changes
+\BOOKMARK [1][-]{section.5}{Study of Price as a Function of all variables}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Prelimenary selection of different models}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Validation of the models}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 14
