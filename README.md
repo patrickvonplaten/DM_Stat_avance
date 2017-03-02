@@ -7,7 +7,7 @@ This project was done as a two-man student project in the scope of the class adv
 - [x] Exercise 2
 - [x] Exercise 3
 - [x] Exercise 4
-- [ ] Exercise 5
+- [x] Exercise 5
 
 ## TODO Rapport
 - [ ] finish Rapport
