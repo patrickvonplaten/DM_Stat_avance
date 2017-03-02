@@ -10,8 +10,8 @@ This project was done as a two-man student project in the scope of the class adv
 - [x] Exercise 5
 
 ## TODO Rapport
-- [ ] finish Rapport
-- [ ] proof reading
+- [x] finish Rapport
+- [x] proof reading
 
 ## ISSUES 
 - [x] not sure whether my answer for 3) a) is completely correct -> need discussion
