@@ -140,9 +140,53 @@ It can clearly be seen that all the VIF values are high meaning that the $R^2$ i
 
 % subsection variance_inflation_factors (end)
 
-\subsection{Regression on orthogonal base} % (fold)
+\subsection{Regression on Orthogonal Base} % (fold)
 \label{sub:regression_on_orthogonal_base}
 
+In order to check whether the ``kop variables'' are centered and reduced, 
+we wrote a small function that checks wheter the mean is close to zero and 
+the standard deviation close to one. 
+
+\begin{lstlisting}[caption={check center and scale funcion in R},label={lst:cent_func}]
+	centReduc <- function(var){
+	  mean = all.equal(1,sd(var))
+	  vari = all.equal(0,mean(var))
+	  ls <- list(mean, vari)
+	  return (ls)
+	}
+\end{lstlisting}
+
+Executing this function, we can see that all three variables are centered and reduced. Additionally, we checked whether the covariances between each of the variables is 0 proving that they are orthogonal.
+
+We will now analyse the performance of the obtained new polynomial 
+regression model. The result is: 
+
+\begin{equation}\label{eq:price_km_poly}
+	price = \beta_0 + \beta_1 \times kop_1 + \beta_2 \times kop_2 + \beta_1 \times kop_3 
+	+ \epsilon
+\end{equation}
+
+Despite this model having the same $R^2$ value as the model in subsection 
+\ref{sub:poly_km} 0.366, we have to note that the p-values for $\beta_1$, $\beta_2$ are much lower than in the previous polynomial regression model.
+As a conclusion, it can be said that this model will probably do a slightly better job predicting the price than the one before, but has a bias that is still too high ($R^2$ = 0.366).
+
+Finally we will show, that all three ``kop variables'' can be constructed 
+from the original variable ``km''. Since ``kop1'' derives from the same vector space as ``km'', ``kop3'' from the same as ``$km^2$'' and ``kop3'' from the same as ``$km^3$'' we know that we can write the three variables as the following functions:
+
+\begin{equation}\label{eq:price_km_poly}
+	kop_1 = \alpha + \beta_1 \times km
+\end{equation}
+
+\begin{equation}\label{eq:price_km_poly}
+	kop_2 = \alpha + \beta_1 \times km + \beta_2 \times km^2
+\end{equation}
+
+\begin{equation}\label{eq:price_km_poly}
+	kop_3 = \alpha + \beta_1 \times km + \beta_2 \times km^2 + \beta_3 \times km^3
+\end{equation}
+
+Using the ``lm-function'' in \emph{R}, we calculated the $\alpha$ and the 
+$\beta_i$ for every ``kop variable'' and showed afterwards, that the ``kop variables'' created by us using the above are equal to the ``kop variables'' of the data set.
 
 
 % subsection regression_on_orthogonal_base (end)

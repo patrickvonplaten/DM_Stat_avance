@@ -84,10 +84,6 @@ summary(modPriABS)
 # would just create a constant line (when plotting our pred), showing that the biais 
 # is too high.
 
-# COMMENT: WE SHOULD EXPLAIN THE MEANING OF EACH OF THE NUMBERS WE GET WHEN 
-# DOING LINEAR REGRESSION! THEN IT IS CLEARER AND EASIER TO UNDERSTAND THE CONCLUSION WE 
-# ARE ARRIVING AT TAKING INTO ACCOUNT A CERTIAN LINEAR REGRESSION
-
 # 4)
 # a)
 # create modPriKM = linear regression as f(km)
@@ -281,7 +277,7 @@ summary(Mthird)
 # fourth model: do the step analysis as a start of age and km:
 df4 = df
 colnames(df4) = c("x1","x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12")
-Mfourth = lm(x1~x3+x2+x11,data=df4);
+Mfourth = lm(x1~x3+x2,data=df4);
 summary(Mfourth)
 mod=paste("~",paste("x",2:12,sep="",collapse="+"))
 Mfourth=stepAIC(Mfourth,scope=list(lower=~1,upper=mod),
