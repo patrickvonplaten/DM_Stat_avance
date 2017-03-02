@@ -1,1 +1,13 @@
-\section{Étude du prix en fonction de la présence ou non de l'ABS}
+\section{Study of price as a function of the prescene of ABS-technology}
+
+COMMENTS: No difference can be seen between those two models, so there doesn't 
+seem to be a difference. It may be pertinant remeber that the logical variable
+cannot be calculated upon, e.g. we cannot calculate the average of \textit{loglDf\$ABS}. Though this should not make a difference in the final model as regression requires the logical variable to implemented as a dummy variable (i.e. qualitavitely) anyways.
+
+COMMENTS: It clearly can be seen that the variable "ABS" does not account for any of the variance of the price, since it's $R^2$ is very low (0.00097). That means in general that the model does not do a very good job predicting the price
+Also, it can be seen that our "Intercept" value nearly completely explains
+the price (look at the parameter values or $Pr(>|t|)$). Therefore, our prediction
+would just create a constant line (when plotting our pred), showing that the biais is too high.
+
+COMMENT: WE SHOULD EXPLAIN THE MEANING OF EACH OF THE NUMBERS WE GET WHEN 
+DOING LINEAR REGRESSION! THEN IT IS CLEARER AND EASIER TO UNDERSTAND THE CONCLUSION WE ARE ARRIVING AT TAKING INTO ACCOUNT A CERTIAN LINEAR REGRESSION
