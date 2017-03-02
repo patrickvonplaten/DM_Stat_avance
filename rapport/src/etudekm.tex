@@ -72,7 +72,7 @@ Given that $mean(km)$ and $SD(km)$ are constants, we note that this is this appr
 \subsection{Polynomial Regression Model} % (fold)
 \label{sub:poly_km}
 
-We will now analyze the performance of a polynomial regression model. Given the third degree equation \ref{eq:price_km_poly} and our data, the results are. 
+We will now analyze the performance of a polynomial regression model. Given the third degree equation \ref{eq:price_km_poly} and our data, the results are:
 
 \begin{equation}\label{eq:price_km_poly}
 	price = \beta_0 + \beta_1 \times km + \beta_2 \times km^2 + \beta_1 \times km^3 
@@ -117,8 +117,6 @@ When applying the anova method to the two models, we can see different results e
 \subsection{Variance Inflation Factors} % (fold)
 \label{sub:variance_inflation_factors}
 
-
-
 In order to calculate the vif of a model, we have to take the three input variables 
 being in our case $km$, $km^2$ and $km^3$ and do a linear regression for all each
 using the other remaining two variables as the input variables (e.g. for $km
@@ -138,7 +136,14 @@ $: $km ~ I(km^2) + I(km^3)$). Then we take the coefficient of determination of e
 \end{table}
 
 \noindent
-It can clearly be seen that all the VIF values are high meaning that the $R^2$ is relatively close to one. That implies that the function predicts the actual values quite well. The largest VIF is that of $km^2$, which is logical because $km^2$ can easily be modeled by summing up  $(factor * kw)$ and $(km^3 / factor)$ where as it is harder to model \texit{km} by taking its square and cube because their functions are both bigger than \textit{km}.
+It can clearly be seen that all the VIF values are high meaning that the $R^2$ is relatively close to one. That implies that the function predicts the actual values quite well. The largest VIF is that of $km^2$, which is logical because $km^2$ can easily be modeled by summing up  $(factor * km)$ and $(km^3 / factor)$ where as it is harder to model \textit{km} by taking its square and cube because their functions are both bigger than \textit{km}.
 
 % subsection variance_inflation_factors (end)
+
+\subsection{Regression on orthogonal base} % (fold)
+\label{sub:regression_on_orthogonal_base}
+
+
+
+% subsection regression_on_orthogonal_base (end)
 

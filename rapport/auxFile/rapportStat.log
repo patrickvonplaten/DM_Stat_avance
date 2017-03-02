@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.17)  2 MAR 2017 04:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.17)  2 MAR 2017 04:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2298,35 +2298,7 @@ File: ./img/bxps.png Graphic file (type png)
 Package pdftex.def Info: ./img/bxps.png used on input line 19.
 (pdftex.def)             Requested size: 327.72357pt x 244.41252pt.
 ) [4 <./img/bxps.png>] (./src/etudeABS.tex) [5]
-(./src/etudekm.tex [6] [7] [8]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.147 ...well. The , which makes sense because km^
-                                                  2 can easily be modeled by...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.148 
-      
-? 
-
-Overfull \hbox (8.76791pt too wide) in paragraph at lines 146--148
-\OT1/cmr/m/n/12 well. The , which makes sense be-cause km$[]\OML/cmm/m/it/12 ca
-neasilybemodeledbysummingup\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 factor \OMS/cmsy/m
-/n/12 ^^C
- []
-
-
-Overfull \hbox (206.34184pt too wide) in paragraph at lines 146--148
-\OML/cmm/m/it/12 kw\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 and\OT1/cmr/m/n/12 (\OML/c
-mm/m/it/12 km[]=factor\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 whereasitishardertomode
-lkmbytakingitssquareandcubebecausetheirfunctionsarebothbiggerthankm:$ 
- []
-
-) [9] (./src/etudefinal.tex
+(./src/etudekm.tex [6] [7] [8]) [9] (./src/etudefinal.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 11.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
@@ -2380,7 +2352,7 @@ al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on auxFile/rapportStat.pdf (13 pages, 309863 bytes).
+Output written on auxFile/rapportStat.pdf (13 pages, 308300 bytes).
 PDF statistics:
  237 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams
