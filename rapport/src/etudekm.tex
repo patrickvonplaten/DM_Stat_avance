@@ -11,20 +11,14 @@ A simple regression of \textit{price} on milage represented by the variable \tex
 \end{equation}
 
 \noindent
-where $\beta_0$ is the intercept, $\beta_1$ is the slope and $\epsilon$ is 
-the residual variable. Applying this to our data results in $\beta_0$ and 
-$\beta_1$ values of 5.559202 and -0.016051. Using the same analysis and 
-reasoning as in \ref{sec:price_abs}, $km$ is obviously a better parameter to 
-describe the price of a car. The coefficent of detirmination $R^2$ is much 
-higher (0.3317) and the p-value is much lower ($<2e^{16}$), suggesting that 
-\textit{km} should be in model explaining the price.
+where $\beta_0$ is the intercept, $\beta_1$ is the slope and $\epsilon$ is the residual term. Applying this to our data results in $\beta_0$ and $\beta_1$ values of 5.559202 and -0.016051. Using the same analysis and reasoning as in \ref{sec:price_abs}, $km$ is obviously a better parameter to describe the price of a car. The coefficent of detirmination $R^2$ is much higher (0.3317) and the p-value is much lower ($<2e^{16}$), suggesting that \textit{km} should be in model explaining the price.
 
 % subsection simple_regression (end)
 
 \subsection{Inference from Simple Model} % (fold)
 \label{sub:inference_from_simple_model}
 
-We will now using the simple model from the previous section create confidence intervals of prices for cars with difference milages. This was implemented in \textit{R} using the \textit{predict} function. For a cars with a milages of 50 000 km and 135 000 km a confindence intervals at the defult significance level 95\% are shown in Table \ref{tab:confint_km}.
+We will now using the simple model from the previous section create confidence intervals of prices for cars with difference milages. This implemented in \textit{R} using the \textit{predict} function. For a cars with a milages of 50 000 km and 135 000 km a confindence intervals at the defult significance level 95\% are shown in Table \ref{tab:confint_km}.
 
 \begin{table}[H]
 \centering
@@ -144,7 +138,7 @@ $: $km ~ I(km^2) + I(km^3)$). Then we take the coefficient of determination of e
 \end{table}
 
 \noindent
-It can clearly be seen that all the VIF values are high meaning that the $R^2$ is relatively close to one. That implies that the function predicts the actual values quite well. The , which makes sense because km^2 can easily be modeled by summing up  (factor * kw) and (km^3 / factor) where as it is harder to model km by taking its square and cube because their functions are both bigger than km.
+It can clearly be seen that all the VIF values are high meaning that the $R^2$ is relatively close to one. That implies that the function predicts the actual values quite well. The largest VIF is that of $km^2$, which is logical because $km^2$ can easily be modeled by summing up  $(factor * kw)$ and $(km^3 / factor)$ where as it is harder to model \texit{km} by taking its square and cube because their functions are both bigger than \textit{km}.
 
 % subsection variance_inflation_factors (end)
 
