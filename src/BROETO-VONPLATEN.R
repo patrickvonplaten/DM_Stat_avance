@@ -144,16 +144,13 @@ summary(modPriKop1)
 #it can be shown that the models are logically the same, since R^2
 # and other important functions are equal
 
-<<<<<<< HEAD
 # Theoretically, it is obvious that two linear regressions are if their regression lines (y) are parallel. A modified 
 # linear regression line stays parallel as long as all the values of the input data are multiplied by some value and/or 
 # some value is added to them. Since in our case all the input data is substracted by the same value the average and in the following
 # divided (=multiplied by its inverse) by the same value = the standard deviation, it is theoretically evident that the linear regression 
 # model has the same outcome
-=======
-# En effet, th??oriquement, on doit trouver un coefficient directeur ??gale ?? l?????cart type de la variable km fois le coefficient directeur initialement trouv?? et similairement
-# l???intercept doit ??tre ??gale ?? l???ancien intercept plus l???ancien coefficient directeur fois la moyenne de km.
->>>>>>> origin/master
+
+
 
 # d)
 # linear model is as follows: given a random sample(Y,X1,...,XN) the relation
@@ -174,17 +171,12 @@ M3b = lm(price~ I(km^3) + I(km^2)+ km, data = df)
 anova(M3)
 anova(M3b)
 
-<<<<<<< HEAD
 # When applying the anova method to the two models, we can see different results even though the three input variables are the same. 
 # This is due to the order the input varibles are taken in as an input. In our case, anova() determines how much variance is explained by the 
 # first entry (km e.g.) and tests its significance, then what portion of the remaining variance is explained by the next variable (km^2) 
 # and tests its significance and so forth. Thus, the remaining portion will differ depending on the first variable being inserted and therefore 
 # different significances (Pr(>F) ) is the result.
-=======
-# La m??thode anova appliqu??e aux deux mod??les donne des r??sultats diff??rents. Cela est d?? ?? l???ordre des variables en entr??e. 
-# Si l???on consid??re que le prix varie majoritairement de fa??on lin??aire avec la distance parcourue alors il faut mettre la variable km en premier. Les variations restantes seront assimil??es ?? des variations ??voluant en fonction de la distance au carr?? ou au cube.
-# En effet, la fonction anova ??tudie tout d???abord les variations d??es ?? la premi??re variable d???entr??e puis ?? la seconde et ?? la troisi??me.
->>>>>>> origin/master
+
 
 # f)
 library(car)
