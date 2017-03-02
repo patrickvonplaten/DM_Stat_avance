@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.20)  2 MAR 2017 02:52
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.17)  2 MAR 2017 01:16
+>>>>>>> origin/master
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2311,11 +2315,19 @@ Package logreq Info: Writing requests to 'rapportStat.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  52144 strings out of 493014
  1176938 string characters out of 6133351
  1701450 words of memory out of 5000000
  54898 multiletter control sequences out of 15000+600000
  14120 words of font info for 52 fonts, out of 8000000 for 9000
+=======
+ 52117 strings out of 493014
+ 1176528 string characters out of 6133351
+ 1699823 words of memory out of 5000000
+ 54885 multiletter control sequences out of 15000+600000
+ 13806 words of font info for 51 fonts, out of 8000000 for 9000
+>>>>>>> origin/master
  1141 hyphenation exceptions out of 8191
  69i,8n,79p,10374b,1552s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb

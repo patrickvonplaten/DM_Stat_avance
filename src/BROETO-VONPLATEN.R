@@ -139,17 +139,18 @@ kmCentered/df$kop1
 
 modPriKop1 = lm(price ~ kop1, data = df)
 summary(modPriKop1)
- 
-#it can be shown that the models are logically the same since R^2
-# and other important functions are equal
-# need a good explanation for this one!!!
-# --> explain mathematically why T VALUE, Pr(>|t|) and F-statistic and R^2
-# are the same. It is obvious that centering and reducing shouldn't change 
-# anything. The regression looks at how changes in the X value affect the Y vaule
-# maybe the last sentence nicely formulated is already enough
 
-# En effet, th??oriquement, on doit trouver un coefficient directeur ??gale ?? l?????cart type de la variable km fois le coefficient directeur initialement trouv?? et similairement
-# l???intercept doit ??tre ??gale ?? l???ancien intercept plus l???ancien coefficient directeur fois la moyenne de km.
+ 
+#it can be shown that the models are logically the same, since R^2
+# and other important functions are equal
+
+# Theoretically, it is obvious that two linear regressions are if their regression lines (y) are parallel. A modified 
+# linear regression line stays parallel as long as all the values of the input data are multiplied by some value and/or 
+# some value is added to them. Since in our case all the input data is substracted by the same value the average and in the following
+# divided (=multiplied by its inverse) by the same value = the standard deviation, it is theoretically evident that the linear regression 
+# model has the same outcome
+
+
 
 # d)
 # linear model is as follows: given a random sample(Y,X1,...,XN) the relation
@@ -162,30 +163,101 @@ M3 = lm(price~km + I(km^2) + I(km^3), data = df)
 
 summary(M3)
 
-# comment as above
+# comment as above by evaluating R^2 and the rest
 
 # e)
 M3b = lm(price~ I(km^3) + I(km^2)+ km, data = df)
 
 anova(M3)
 anova(M3b)
-# results are obviously not the same --> comment!!!
-# need more information about anova ...
 
-# La m??thode anova appliqu??e aux deux mod??les donne des r??sultats diff??rents. Cela est d?? ?? l???ordre des variables en entr??e. 
-# Si l???on consid??re que le prix varie majoritairement de fa??on lin??aire avec la distance parcourue alors il faut mettre la variable km en premier. Les variations restantes seront assimil??es ?? des variations ??voluant en fonction de la distance au carr?? ou au cube.
-# En effet, la fonction anova ??tudie tout d???abord les variations d??es ?? la premi??re variable d???entr??e puis ?? la seconde et ?? la troisi??me.
+# When applying the anova method to the two models, we can see different results even though the three input variables are the same. 
+# This is due to the order the input varibles are taken in as an input. In our case, anova() determines how much variance is explained by the 
+# first entry (km e.g.) and tests its significance, then what portion of the remaining variance is explained by the next variable (km^2) 
+# and tests its significance and so forth. Thus, the remaining portion will differ depending on the first variable being inserted and therefore 
+# different significances (Pr(>F) ) is the result.
+
 
 # f)
 library(car)
+# let's check out the vif function
 ?vif
-# check out the vif function and calculate the variance inflation factor
-# wikepedia explains how to calculate the output of the function
-# https://en.wikipedia.org/wiki/Variance_inflation_factor
+vif(M3)
+
+# In order to calculate the vif of a model, we have to take the three input variables 
+# being km, km^2 and km^3 in our case and do a linear regression for all three of them 
+# using the other remaining two variables as the input variables (e.g. for km: km ~ I(km^2) + I(km^3)). 
+# Then we take the coefficient of determination of each model (R^2) and apply the formula 1 / ( 1 - R^2 )
+# to them. This is going to get us the variance inflation factor (VIF) of each variable.
+
+vifKM = 1 / (1 - summary(lm(km ~I(km^2) + I(km^3),data = df))$r.squared)
+vifKM
+vifKM2 = 1 / (1 - summary(lm(I(km^2) ~ km + I(km^3),data = df))$r.squared)
+vifKM2
+vifKM3 = 1 / (1 - summary(lm(I(km^3) ~I(km^2) + km ,data = df))$r.squared)
+vifKM3
+
+#It can clearly be seen that all the vif values are high meaning that the R-squared is close to one.
+# That implies that the function predicts the actual values quite well. The best value is that of vifKM2, 
+# which makes sense because km^2 can easily be modeled by summing up  (factor * kw) and (km^3 / factor) where 
+# as it is harder to model km by taking its square and cube because their functions are both bigger than km.
 
 # g)
 
-# TODO
+#create function to check wether mean is approx 0 and var is approx 1
+centReduc <- function(var){
+  mean = all.equal(1,sd(var))
+  vari = all.equal(0,mean(var))
+  ls <- list(mean, vari)
+  return (ls)
+}
+
+centReduc(df$kop1)
+centReduc(df$kop2)
+centReduc(df$kop3)
+
+# all differences are close enough to 1 or 0 respectively, so variables are 
+# centered and reduced 
+
+all.equal(0,cov(df$kop1,df$kop2))
+all.equal(0,cov(df$kop3,df$kop2))
+all.equal(0,cov(df$kop3,df$kop2))
+
+# all differences are close to zero, so the variables are orthogonal to each other
+
+M3c = lm(price ~ kop1 + kop2 + kop3, data = df)
+summary(M3c)
+
+#comment as we did before: R squared is the same, p-value is the same 
+# but the intercept is less important which makes sense considering the fact 
+# that the price is much closer to the reduced and centralized km then the initial km
+# --> talk about why it is good to centralize and reduce the varibles
+
+
+# in order to construct kop1, kop2 and kop3 we will use linear regression models to 
+# get the intercept value and the other respective value to create the kop variables being:
+#   kop1 = a*km + i
+#   kop2 = a*km^2 + b*km + i 
+#   kop3 = a*km^3 + b*km^2 + c*km + i
+
+kop1Coef = lm(kop1~km,data = df)$coefficients
+kop2Coef = lm(kop2~I(km^2) + km,data = df)$coefficients
+kop3Coef = lm(kop3~I(km^3) + I(km^2) + km,data = df)$coefficients
+
+summary(lm(kop1~km,data = df))
+summary(lm(kop2~I(km^2) + km,data = df))
+summary(lm(kop3~I(km^3) + I(km^2) + km,data = df))
+
+kop1 = kop1Coef[1] + kop1Coef[2]*df$km
+kop2 = kop2Coef[1] + kop2Coef[2]*(df$km^2) + kop2Coef[3]*df$km
+kop3 = kop3Coef[1] + kop3Coef[2]*df$km^3 + kop3Coef[3]*df$km^2 + kop3Coef[4]*df$km
+
+all.equal(df$kop1,kop1)
+all.equal(df$kop2,kop2)
+all.equal(df$kop3,kop3)
+
+#It can be noticed that the constructed variables are the same as the variables kop1,kop2 and kop3
+
 
 # 5)
 
