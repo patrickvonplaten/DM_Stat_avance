@@ -20,6 +20,7 @@ higher (0.3317) and the p-value is much lower ($<2e^{16}$), suggesting that
 \textit{km} should be in model explaining the price.
 
 % subsection simple_regression (end)
+
 \subsection{Inference from Simple Model} % (fold)
 \label{sub:inference_from_simple_model}
 
@@ -49,7 +50,7 @@ We see that the confidence intervall for a car that has 135 000 km milage is muc
 The data set given includes the variable \textit{kop1} given wit hout explaination of what it charectarizes. In fact, it reduces to the variable \textit{km} as it is a centered and reduced version of it.
 
 \begin{equation}\label{eq:1}
-	kop1 = \frac{km - mean(km)}{SD(km)}
+	kop1 \approx \frac{km - mean(km)}{SD(km)}
 \end{equation}
 
 \noindent
@@ -63,19 +64,87 @@ In fact, simple regression models based on \textit{kop1} and \textit{km} result 
 Where $\gamma_i$ are the coefficents and $e$ is the residual. Using relationship \ref{eq:1} the regression model reduces to
 
 \begin{equation}
-	 price = \gamma_0 + \gamma_1 \times (km + mean(km))+ e = (\gamma_0 + \gamma_1 \times mean(km)) + \gamma_1 \times km + e
+	\begin{split}
+	 price & \approx \gamma_0 + \gamma_1 \times \frac{km - mean(km)}{SD(km)}+ e \\ &
+	 = (\gamma_0 +  \frac{\gamma_1 \times mean(km)}{SD(km)}) + \frac{\gamma_1}{SD(km)} \times km + e.
+	 \end{split}
 \end{equation}
 
 \noindent
-Given that $mean(km)$ is a constant, we note that this is this equivant with the regression model \ref{eq:price_km} as $\beta_0 = (\gamma_0 + \gamma_1 \times mean(km))$, $\beta_1 = \gamma_1$ and the residuals $\epsilon = e$.
-	
-% need a good explanation for this one!!!
-% --> explain mathematically why T VALUE, Pr(>|t|) and F-statistic and R^2
-% are the same. 
-It is obvious that centering and reducing shouldn't change anything. The regression looks at how changes in the X value affect the Y vaule
+Given that $mean(km)$ and $SD(km)$ are constants, we note that this is this approximately equivant with the regression model \ref{eq:price_km} as $\beta_0 \approx \gamma_0 + \frac{\gamma_1 \times mean(km)}{SD(km)}$, $\beta_1 \approx \frac{\gamma_1}{SD(km)}$ and the residuals $\epsilon \approx e$. It is obvious that centering and reducing shouldn't change anything. The regression looks at how changes in the explainatory variables effect the response variable (here \textit{price}). As simple regression models with \textit{km} and \textit{kop1} are essentially regressing on the same random variable they should result in equally good models with the same metrics such as $R^2$ which are equivelant (0.3317) and the p-value for the slope ($<2e^{16}$).
 
-% En effet, th??oriquement, on doit trouver un coefficient directeur ??gale ?? l?????cart type de la variable km fois le coefficient directeur initialement trouv?? et similairement
-% l???intercept doit ??tre ??gale ?? l???ancien intercept plus l???ancien coefficient directeur fois la moyenne de km.
-% subsection determination_of_mystery_variable (end)
+% subsection det_myst_var (end)
 
-% section det_myst_var (end)
+\subsection{Polynomial Regression Model} % (fold)
+\label{sub:poly_km}
+
+We will now analyze the performance of a polynomial regression model. Given the third degree equation \ref{eq:price_km_poly} and our data, the results are. 
+
+\begin{equation}\label{eq:price_km_poly}
+	price = \beta_0 + \beta_1 \times km + \beta_2 \times km^2 + \beta_1 \times km^3 
+	+ \epsilon
+\end{equation}
+
+\noindent
+This is a linear model as it is defined given a random sample $$(Y,X_1,\ldots,X_N)$$ the relation between the observations $Y$ and the independant variables $X_1,\ldots,X_N$ is formulated as $Y = b_0 + b_1*f_1(X_1) + \ldots + b_N*f_N(X_N)$, where $F_i$ may be non-linear funcions.
+
+\noindent
+It is interesting to note that the p-values for $\beta_1$, $\beta_2$ and $\beta_3$ are quite high 0.132, 0.839 and 0.766 respectively. The $R^2 = 0.366$ value is slightly better than the simple model. Despite this, it can be concluded that the the third degree polynomial explains the price of cars relatively poorly.
+% subsection poly_km (end)
+
+\subsection{ANOVA} % (fold)
+\label{sub:anova}
+
+ANOVA or Analysis of Variance is now performed on the polynomial model. It compares the means of several grouop in order to among other things conclude the significance of each variable. We have implemented this on two regression models. The polynomial model form the previous section as well as a model in which the order of the polynomial terms is reversed. We will refer to them here as Model 1 and Model 2 respectively. The results are shown in the Table \ref{tab:3}.
+
+\begin{equation}
+	price = \alpha_0 + \alpha_1 \times km^3 + \alpha_2 \times km^2 + \alpha_1 \times km +e
+\end{equation}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{||c |c c c||}
+ \hline
+ Variable & $km$ & $km^2$ & $km^3$ \\ [0.5ex]
+ \hline
+ Model 1 & $< 2 e^{-16}$ & 0.00313 & 0.76573 \\
+ Model 2 & 0.132 & $7.444 e^{-9}$ & $2.104 e^{-12}$ \\
+ \hline
+\end{tabular}
+\caption{P-values for each variable in Model 1 and Model 3}
+\label{tab:3}
+\end{table}
+
+\noindent
+When applying the anova method to the two models, we can see different results even though the three input variables are the same. This is due to the order the input varibles are taken in as an input. In our case, \textit{anova()} determines how much variance is explained by the first entry (\textit{km} e.g.) and tests its significance, then what portion of the remaining variance is explained by the next variable ($km^2$) and tests its significance and so forth. Thus, the remaining portion will differ depending on the first variable being inserted and therefore  different significances (p-values) is the result.
+
+% subsection anova (end)
+
+\subsection{Variance Inflation Factors} % (fold)
+\label{sub:variance_inflation_factors}
+
+
+
+In order to calculate the vif of a model, we have to take the three input variables 
+being in our case $km$, $km^2$ and $km^3$ and do a linear regression for all each
+using the other remaining two variables as the input variables (e.g. for $km
+$: $km ~ I(km^2) + I(km^3)$). Then we take the coefficient of determination of each model ($R^2$) and apply the formula $1 / ( 1 - R^2 )$. This results in the variance inflation factor (VIF) of each variable. For our dataset the \textit{vif} function from the \textit{car} package resulted in the values shown in Table \ref{tab:vif}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{||c ||c c c||}
+ \hline
+ Variable & $km$ & $km^2$ & $km^3$ \\ [0.5ex]
+ \hline
+ VIF & $ 165.3163 $ & 787.3501 & 262.5217 \\
+ \hline
+\end{tabular}
+\caption{VIF values for each variable in the polynomial model.}
+\label{tab:vif}
+\end{table}
+
+\noindent
+It can clearly be seen that all the VIF values are high meaning that the $R^2$ is relatively close to one. That implies that the function predicts the actual values quite well. The , which makes sense because km^2 can easily be modeled by summing up  (factor * kw) and (km^3 / factor) where as it is harder to model km by taking its square and cube because their functions are both bigger than km.
+
+% subsection variance_inflation_factors (end)
+
