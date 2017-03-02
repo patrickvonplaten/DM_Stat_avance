@@ -1,4 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Charectaristics of and Correlations in the Data}{}% 2
 \BOOKMARK [1][-]{section.3}{Study of price as a function of the prescene of ABS-technology}{}% 3
-\BOOKMARK [1][-]{section.4}{\311tude du prix en fonction du kilom\351trage}{}% 4
+\BOOKMARK [1][-]{section.4}{Study of Price as a Function of Mileage}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Simple Regression}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Inference from Simple Model}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Determination of Mystery Variable kop1}{section.4}% 7

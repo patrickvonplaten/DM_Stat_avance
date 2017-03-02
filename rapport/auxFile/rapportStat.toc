@@ -1,0 +1,10 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Charectaristics of and Correlations in the Data}{3}{section.2}
+\contentsline {section}{\numberline {3}Study of price as a function of the prescene of ABS-technology}{5}{section.3}
+\contentsline {section}{\numberline {4}Study of Price as a Function of Mileage}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Simple Regression}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Inference from Simple Model}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Determination of Mystery Variable \textit {kop1}}{7}{subsection.4.3}
